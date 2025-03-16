@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAKE1 | Official Band Website</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #e50914;
+            font-family: 'Metal Mania', cursive;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #e50914, transparent);
+            bottom: -5px;
+            left: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #e50914;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1600/900');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-family: 'Metal Mania', cursive;
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.7);
+        }
+
+        /* Latest Release Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Metal Mania', cursive;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: #e50914;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .latest-release {
+            background-color: #1e1e1e;
+        }
+
+        .release-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .release-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .release-image img {
+            width: 100%;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .release-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .release-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Metal Mania', cursive;
+        }
+
+        .release-info p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .release-platforms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .release-platforms a {
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .release-platforms a:hover {
+            background-color: #e50914;
+            transform: translateY(-5px);
+        }
+
+        /* Band Members Section */
+        .band-members {
+            background-color: #0d0d0d;
+        }
+
+        .members-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .member-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3);
+        }
+
+        .member-image {
+            height: 300px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .member-card:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .member-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-family: 'Metal Mania', cursive;
+        }
+
+        .member-info p {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .member-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .member-social a:hover {
+            background-color: #e50914;
+            transform: translateY(-5px);
+        }
+
+        /* Tour Dates Section */
+        .tour-dates {
+            background-color: #1e1e1e;
+        }
+
+        .tour-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tour-table th, .tour-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .tour-table th {
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #e50914;
+        }
+
+        .tour-table tr {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .tour-table tr:hover {
+            background-color: rgba(229, 9, 20, 0.1);
+        }
+
+        .sold-out {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #333;
+            color: #aaa;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: #0d0d0d;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(229, 9, 20, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #1e1e1e;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #0d0d0d;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-family: 'Metal Mania', cursive;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .contact-info a {
+            color: #e50914;
+            font-weight: 600;
+        }
+
+        .contact-form {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background-color: #1e1e1e;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #e50914;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #e50914;
+            font-family: 'Metal Mania', cursive;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-links li {
+            margin: 10px 20px;
+        }
+
+        .footer-links a {
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #e50914;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .social-links li {
+            margin: 0 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #1e1e1e;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            background-color: #e50914;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 30px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            .section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: #000;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+                z-index: 1000;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                margin: 20px 0;
+            }
+            .menu-toggle {
+                display: block;
+                z-index: 1001;
+            }
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .btn {
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">TAKE1</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#releases">Releases</a></li>
+                    <li><a href="#band">Band</a></li>
+                    <li><a href="#tour">Tour</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>TAKE1</h1>
+                <p>Unleashing the storm of rock since 2025</p>
+                <a href="#tour" class="btn">Upcoming Shows</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Release Section 
+    <section class="section latest-release" id="releases">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Release</h2>
+            </div>
+            <div class="release-content">
+                <div class="release-image">
+                    <img src="/api/placeholder/500/500" alt="Album Cover">
+                </div>
+                <div class="release-info">
+                    <h3>"Electric Reign"</h3>
+                    <p>Our newest album explores the raw energy of classic rock with a modern twist. Featuring 12 tracks of pure adrenaline, "Electric Reign" takes you on a journey through thunderous riffs, powerful vocals, and explosive drum beats.</p>
+                    <p>Released: March 1, 2025</p>
+                    <div class="release-platforms">
+                        <a href="#">Spotify</a>
+                        <a href="#">Apple Music</a>
+                        <a href="#">YouTube Music</a>
+                        <a href="#">Amazon Music</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Band Members Section -->
+    <section class="section band-members" id="band">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet The Band</h2>
+            </div>
+            <div class="members-container">
+                <!-- Member 1 -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="aidan.jpg" alt="Band Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Aidan</h3>
+                        <p>Lead Vocals</p>
+                        <div class="member-social">
+                            <a href="#">FB</a>
+                            <a href="#">IG</a>
+                            <a href="#">TW</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Member 2 -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="kai.jpg" alt="Band Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Kai</h3>
+                        <p>Lead Guitar</p>
+                        <div class="member-social">
+                            <a href="#">FB</a>
+                            <a href="#">IG</a>
+                            <a href="#">TW</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Member 3 -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="aditya.jpg" alt="Band Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Aditya</h3>
+                        <p>Rhythm Guitar</p>
+                        <div class="member-social">
+                            <a href="#">FB</a>
+                            <a href="#">IG</a>
+                            <a href="#">TW</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Member 4 -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="robin sesy.jpg" alt="Band Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Robin V</h3>
+                        <p>Drums</p>
+                        <div class="member-social">
+                            <a href="#">FB</a>
+                            <a href="#">IG</a>
+                            <a href="#">TW</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Member 5 -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="thejas.jpg" alt="Band Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Thejas</h3>
+                        <p>Keyboards & Backing Vocals</p>
+                        <div class="member-social">
+                            <a href="#">FB</a>
+                            <a href="#">IG</a>
+                            <a href="#">TW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Dates Section -->
+    <section class="section tour-dates" id="tour">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tour Dates</h2>
+            </div>
+            <table class="tour-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>City</th>
+                        <th>Venue</th>
+                        <th>Tickets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>April 15, 2025</td>
+                        <td>New York, NY</td>
+                        <td>Madison Square Garden</td>
+                        <td><a href="#" class="btn">Buy Tickets</a></td>
+                    </tr>
+                    <tr>
+                        <td>April 18, 2025</td>
+                        <td>Boston, MA</td>
+                        <td>TD Garden</td>
+                        <td><a href="#" class="btn">Buy Tickets</a></td>
+                    </tr>
+                    <tr>
+                        <td>April 21, 2025</td>
+                        <td>Philadelphia, PA</td>
+                        <td>Wells Fargo Center</td>
+                        <td><a href="#" class="btn">Buy Tickets</a></td>
+                    </tr>
+                    <tr>
+                        <td>April 24, 2025</td>
+                        <td>Washington, DC</td>
+                        <td>Capital One Arena</td>
+                        <td><span class="sold-out">Sold Out</span></td>
+                    </tr>
+                    <tr>
+                        <td>April 27, 2025</td>
+                        <td>Chicago, IL</td>
+                        <td>United Center</td>
+                        <td><a href="#" class="btn">Buy Tickets</a></td>
+                    </tr>
+                    <tr>
+                        <td>May 1, 2025</td>
+                        <td>Los Angeles, CA</td>
+                        <td>Crypto.com Arena</td>
+                        <td><a href="#" class="btn">Buy Tickets</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="300.jpg" alt="Band Photo">
+                    <div class="gallery-overlay">
+                        <a href="#" class="btn">View</a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="band 1.jpg" alt="Band Photo">
+                    <div class="gallery-overlay">
+                        <a href="#" class="btn">View</a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="band2.jpg" alt="Band Photo">
+                    <div class="gallery-overlay">
+                        <a href="#" class="btn">View</a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="robin sesy.jpg" alt="Band Photo">
+                    <div class="gallery-overlay">
+                        <a href="#" class="btn">View</a>
+                    </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="band3.jpg" alt="Band Group Photo">
+                </div>
+                <div class="about-text">
+                    <p>TAKE1 was formed in 2025 when five friends with a shared passion for rock music decided to create something extraordinary. Drawing inspiration from classic rock legends and modern rock innovators, we set out to create a sound that honors the past while pushing boundaries into the future.</p>
+                    <p>Known for our high-energy live performances and authentic connection with fans, TAKE1 continues to grow our dedicated fanbase across the country. We're committed to keeping the spirit of rock alive while constantly evolving our sound.</p>
+                    <p>Whether you're a longtime fan or just discovering our music, thank you for being part of our journey. Rock on!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>For booking inquiries, press, or general questions, feel free to reach out to us:</p>
+                    <p>Email: <a href="mailto:anokayband@gmil.com">anokayband@gmil.com</a></p>
+                    <p>Management: <a href="mailto:anokayband@gmil.com">anokayband@gmil.com</a></p>
+                    <p>Press: <a href="mailto:anokayband@gmil.com">anokayband@gmil.com</a></p>
+                    <p>Fan Mail: <a href="mailto:anokayband@gmil.com">anokayband@gmil.com</a></p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">TAKE1</div>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#releases">Releases</a></li>
+                <li><a href="#band">Band</a></li>
+                <li><a href="#tour">Tour</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="social-links">
+                <li><a href="#">FB</a></li>
+                <li><a href="#">IG</a></li>
+                <li><a href="#">TW</a></li>
+                <li><a href="#">YT</a></li>
+                <li><a href="#">SP</a></li>
+            </ul>
+            <p class="copyright">© 2025 TAKE1. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+
+            // Animation on scroll
+            function animateOnScroll() {
+                const elements = [
+                    { selector: '.release-image img', animation: 'fadeInLeft' },
+                    { selector: '.release-info', animation: 'fadeInRight' },
+                    { selector: '.member-card', animation: 'fadeInUp', delay: true },
+                    { selector: '.tour-table tr', animation: 'fadeInLeft', delay: true },
+                    { selector: '.gallery-item', animation: 'scaleIn', delay: true },
+                    { selector: '.about-image img', animation: 'fadeInLeft' },
+                    { selector: '.about-text', animation: 'fadeInRight' },
+                    { selector: '.contact-info', animation: 'fadeInUp' },
+                    { selector: '.contact-form', animation: 'fadeInUp', delay: 0.3 }
+                ];
+
+                elements.forEach(item => {
+                    const elementList = document.querySelectorAll(item.selector);
+                    elementList.forEach((element, index) => {
+                        const rect = element.getBoundingClientRect();
+                        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                        
+                        if (rect.top <= windowHeight * 0.8) {
+                            if (item.delay === true) {
+                                element.style.animation = `${item.animation} 0.8s forwards ${index * 0.15}s`;
+                            } else if (typeof item.delay === 'number') {
+                                element.style.animation = `${item.animation} 0.8s forwards ${item.delay}s`;
+                            } else {
+                                element.style.animation = `${item.animation} 0.8s forwards`;
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Initial animation check
+            animateOnScroll();
+            
+            // Animation check on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>
